@@ -1,16 +1,11 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+import * as gs from '../integration/selectors/PageElements';
+
+Cypress.Commands.add("login", () => {
+    cy.visit('https://demo.applitools.com/hackathon.html');
+    cy.get(gs.inputUserName).type('user');
+    cy.get(gs.inputPassword).type('password');
+    cy.get(gs.btnSignIn).click();
+})
 //
 //
 // -- This is a child command --

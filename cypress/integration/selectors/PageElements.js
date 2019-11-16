@@ -14,3 +14,4 @@ export const imgLinkedin = ':nth-child(3) > img';
 
 export const divErrorOnLogin = '#random_id_2';
 export const divErrorAlert = '.alert.alert-warning';
+export const btnAmountSort = '#amount';
