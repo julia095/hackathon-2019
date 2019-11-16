@@ -15,3 +15,5 @@ export const imgLinkedin = ':nth-child(3) > img';
 export const divErrorOnLogin = '#random_id_2';
 export const divErrorAlert = '.alert.alert-warning';
 export const btnAmountSort = '#amount';
+export const imgAdvert1 = '#flashSale > img';
+export const imgAdvert2 = '#flashSale2 > img';

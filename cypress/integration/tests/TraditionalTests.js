@@ -2,6 +2,10 @@
 /*Open the login page and write assertions to ensure everything looks OK on that page. 
 i.e. add assertions to ensure all the fields, labels and all other items exist.*/
 import * as gs from '../selectors/PageElements';
+
+const urlV1 = 'https://demo.applitools.com/hackathon.html';
+const urlAdds = 'https://demo.applitools.com/hackathon.html?showAd=true';
+
 describe('Login page UI elements test', function () {
     before(function () {
         cy.visit('https://demo.applitools.com/hackathon.html');
@@ -124,9 +128,9 @@ describe('Data driven tests', function () {
     })
 });
 
-describe.only('Table sort test', function () {
+describe('Table sort test', function () {
     before(function () {
-        cy.login();
+        cy.login(urlV1);
     })
     it('Should sort table by ascending order when click on the header', function () {
         var TableData = [];
@@ -169,3 +173,27 @@ describe.only('Table sort test', function () {
     })
 
 });
+describe('Canvas chart test', function () {
+    before(function () {
+        cy.login(urlV1);
+    })
+    it('Should sort display a bar chart comparing the expenses for the year 2017 and 2018', function () {
+        // not possible as a bar chart is represented as a single canvas. I'm not able to reach graphs
+    })
+    it('Should add the data for the year 2019', function () {
+        // again not possible as a bar chart is represented as a single canvas. I'm not able to reach graphs
+    })
+})
+
+describe.only('Dynamic content test', function () {
+    before(function () {
+        cy.login(urlAdds);
+    })
+    it('Should dynamic gifs exist', function () {
+        cy.get(gs.imgAdvert1).should('be.visible');
+        cy.get(gs.imgAdvert2).should('be.visible');
+    })
+    it('Should ads display correct information', function() {
+        //not possible to ensure that gifs display what we need to see
+    })
+})

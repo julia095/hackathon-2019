@@ -1,7 +1,7 @@
 import * as gs from '../integration/selectors/PageElements';
 
-Cypress.Commands.add("login", () => {
-    cy.visit('https://demo.applitools.com/hackathon.html');
+Cypress.Commands.add("login", (url) => {
+    cy.visit(url);
     cy.get(gs.inputUserName).type('user');
     cy.get(gs.inputPassword).type('password');
     cy.get(gs.btnSignIn).click();
