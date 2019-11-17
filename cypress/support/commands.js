@@ -1,4 +1,4 @@
-import * as gs from '../integration/selectors/PageElements';
+import * as gs from '../page-elements/PageElements';
 
 Cypress.Commands.add("login", (url) => {
     cy.visit(url);
