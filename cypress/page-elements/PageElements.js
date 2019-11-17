@@ -17,3 +17,5 @@ export const divErrorAlert = '.alert.alert-warning';
 export const btnAmountSort = '#amount';
 export const imgAdvert1 = '#flashSale > img';
 export const imgAdvert2 = '#flashSale2 > img';
+export const btnCompareExpenses = '#showExpensesChart';
+export const btnShowNextYear = '#addDataset'

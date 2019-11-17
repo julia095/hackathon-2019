@@ -1,11 +1,11 @@
 /// <reference types = "cypress" />
 import * as gs from '../../page-elements/PageElements';
-import { url, urlRedirect, urlAdds, urlV1, urlAddsV1 } from '../../page-elements/utilities';
-import {loginDataV1} from '../../testdata/test-data'
+import { url, urlRedirect, urlAdds } from '../../page-elements/utilities';
+import {loginDataV2} from '../../testdata/test-data'
 
 describe('Login page UI elements test', function() {
   before(function() {
-    cy.visit(urlV1);
+    cy.visit(url);
   });
   it('Should a header image be visible and have a link', function() {
     // Should be visible
@@ -99,9 +99,9 @@ describe('Login page UI elements test', function() {
 
 describe('Data driven tests', function() {
   beforeEach(function() {
-    cy.visit(urlV1);
+    cy.visit(url);
   });
-  loginDataV1.forEach(data => {
+  loginDataV2.forEach(data => {
     it(`should ${data.testName}`, function() {
       cy.get(gs.inputUserName).invoke('val', data.userName);
       cy.get(gs.inputPassword).invoke('val', data.password);
@@ -121,7 +121,7 @@ describe('Data driven tests', function() {
 
 describe('Table sort test', function() {
   before(function() {
-    cy.login(urlV1);
+    cy.login(url);
   });
   it('Should sort table by ascending order when click on the header', function() {
     var TableData = [];
@@ -199,7 +199,7 @@ describe('Table sort test', function() {
 });
 describe('Canvas chart test', function() {
   before(function() {
-    cy.login(urlV1);
+    cy.login(url);
   });
   it('Should sort display a bar chart comparing the expenses for the year 2017 and 2018', function() {
     // not possible as a bar chart is represented as a single canvas. I'm not able to reach graphs
@@ -211,7 +211,7 @@ describe('Canvas chart test', function() {
 
 describe('Dynamic content test', function() {
   before(function() {
-    cy.login(urlAddsV1);
+    cy.login(urlAdds);
   });
   it('Should dynamic gifs exist', function() {
     cy.get(gs.imgAdvert1).should('be.visible');

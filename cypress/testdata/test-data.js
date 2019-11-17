@@ -1,9 +1,40 @@
-export const loginData = [
+import {urlRedirect, urlRedirectV1} from '../page-elements/utilities'
+export const loginDataV1 = [
     {
       testName: 'throw an error with no username and password',
       userName: '',
       password: '',
-      // v1: expectedResult: 'Both Username and Password must be present ',
+      expectedResult: 'Both Username and Password must be present ',
+      redirect: false,
+    },
+    {
+      testName: 'throw an error with username, but with no password',
+      userName: 'user',
+      password: '',
+      expectedResult: 'Password must be present',
+      redirect: false,
+    },
+    {
+      testName: 'throw an error with password, but with no username',
+      userName: '',
+      password: 'password',
+      expectedResult: 'Username must be present',
+      redirect: false,
+    },
+    {
+      testName: 'let you login with both username and password',
+      userName: 'username',
+      password: 'password',
+      expectedResult: urlRedirectV1,
+      redirect: true,
+    },
+  ];
+
+  export const loginDataV2 = [
+    {
+      testName: 'throw an error with no username and password',
+      userName: '',
+      password: '',
       expectedResult: 'Please enter both username and password',
       redirect: false,
     },
@@ -25,7 +56,6 @@ export const loginData = [
       testName: 'let you login with both username and password',
       userName: 'username',
       password: 'password',
-      // v1: expectedResult: 'https://demo.applitools.com/hackathonApp.html',
       expectedResult: urlRedirect,
       redirect: true,
     },
