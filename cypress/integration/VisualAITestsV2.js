@@ -1,11 +1,11 @@
 /// <reference types = "cypress" />
 import * as gs from '../page-elements/PageElements';
-import { url, urlAdds } from '../page-elements/utilities';
+import { urlV2, urlAddsV2 } from '../support/config';
 import {loginDataAI} from '../testdata/test-data'
 
 describe('Visual validation tests', () => {
   beforeEach(() => {
-    cy.visit(url);    
+    cy.visit(urlV2);    
     cy.eyesOpen({
       appName: 'Hackathon 2019',
       browser: { width: 800, height: 600 },
@@ -22,7 +22,7 @@ describe('Visual validation tests', () => {
   });
 
   loginDataAI.forEach(data => {
-    it(`should ${data.testName}`, function() {
+    it(`Should ${data.testName}`, function() {
       cy.get(gs.inputUserName).invoke('val', data.userName);
       cy.get(gs.inputPassword).invoke('val', data.password);
       cy.get(gs.btnSignIn).click();
@@ -32,13 +32,13 @@ describe('Visual validation tests', () => {
 
 
 it('Should sort table by ascending order when click on the header', () => {
-    cy.login(url);
+    cy.login(urlV2);
     cy.get(gs.btnAmountSort).click();
     cy.eyesCheckWindow('Table sort');
   });
 
 it('Should display a bar chart comparing the expenses for the year 2017 and 2018 & Add data for 2019', () => {
-    cy.login(url);
+    cy.login(urlV2);
     cy.get(gs.btnCompareExpenses).click();
     cy.wait(4000);
     cy.eyesCheckWindow('Display a chart for 2017 and 2018');
@@ -48,7 +48,7 @@ it('Should display a bar chart comparing the expenses for the year 2017 and 2018
   });
 
 it('Should dynamic gifs exist', function() {
-  cy.login(urlAdds);  
+  cy.login(urlAddsV2);  
   cy.eyesCheckWindow('Dynamic gifs exist and correct');
   });
 });

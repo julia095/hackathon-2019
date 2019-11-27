@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 import * as gs from '../page-elements/PageElements';
-import { urlV1, urlAddsV1 } from '../page-elements/utilities';
+import { urlV1, urlAddsV1 } from '../support/config';
 import {loginDataAI} from '../testdata/test-data'
 
 describe('Visual validation tests', () => {
@@ -22,7 +22,7 @@ describe('Visual validation tests', () => {
   });
 
   loginDataAI.forEach(data => {
-    it(`should ${data.testName}`, function() {
+    it(`Should ${data.testName}`, function() {
       cy.get(gs.inputUserName).invoke('val', data.userName);
       cy.get(gs.inputPassword).invoke('val', data.password);
       cy.get(gs.btnSignIn).click();

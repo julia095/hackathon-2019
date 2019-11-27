@@ -1,7 +1,8 @@
 /// <reference types = "cypress" />
 import * as gs from '../page-elements/PageElements';
-import { url, urlRedirect, urlAdds, urlV1, urlAddsV1 } from '../page-elements/utilities';
+import { urlV1, urlAddsV1 } from '../support/config';
 import {loginDataV1} from '../testdata/test-data'
+import { StoreTableDataInArray } from '../support/util-functions';
 
 describe('Login page UI elements test', function() {
   before(function() {
@@ -102,7 +103,7 @@ describe('Data driven tests', function() {
     cy.visit(urlV1);
   });
   loginDataV1.forEach(data => {
-    it(`should ${data.testName}`, function() {
+    it(`Should ${data.testName}`, function() {
       cy.get(gs.inputUserName).invoke('val', data.userName);
       cy.get(gs.inputPassword).invoke('val', data.password);
       cy.get(gs.btnSignIn).click();
@@ -113,7 +114,7 @@ describe('Data driven tests', function() {
       }
     });
 
-    it(`should have correct position for  ${data.testName}`, function() {
+    it(`Should have correct position for  ${data.testName}`, function() {
       // not possible to test, if text will change position
     });
   });
@@ -124,79 +125,19 @@ describe('Table sort test', function() {
     cy.login(urlV1);
   });
   it('Should sort table by ascending order when click on the header', function() {
-    var TableData = [];
-    var TableDataAfter = [];
-    cy.get('table>tbody>tr')
-      .each(($el, index, $list) => {
-        let amount = $el.find('td').eq(4).text().trim().replace('USD', '');
-        let amountNew = amount.replace(/\s+/g, '');
-        TableData[index] = {
-          status: $el
-            .find('td')
-            .eq(0)
-            .text()
-            .trim(),
-          date: $el
-            .find('td')
-            .eq(1)
-            .text()
-            .trim(),
-          description: $el
-            .find('td')
-            .eq(2)
-            .text()
-            .trim(),
-          category: $el
-            .find('td')
-            .eq(3)
-            .text()
-            .trim(),
-          amount: parseFloat(amountNew.replace(',', '')),
-        };
-      })
-      .then(el => {
-        let sortedTableData = TableData.sort((a, b) => {
-          return a.amount - b.amount;
+    cy.wrap(StoreTableDataInArray().then(arr => {
+      const sortedTableData = arr.sort((a, b) => a.amount - b.amount);
+      cy.get(gs.btnAmountSort)
+        .click()
+        .then(() => {
+          cy.wrap(StoreTableDataInArray().then((res) => {
+            expect(res).to.deep.equal(sortedTableData);
+          }))
         });
-        cy.get(gs.btnAmountSort).click();
-        cy.get('table>tbody>tr')
-          .each(($el, index, $list) => {
-            let amount = $el
-              .find('td')
-              .eq(4)
-              .text()
-              .replace('USD', '');
-            let amountNew = amount.replace(/\s+/g, '');
-            TableDataAfter[index] = {
-              status: $el
-                .find('td')
-                .eq(0)
-                .text()
-                .trim(),
-              date: $el
-                .find('td')
-                .eq(1)
-                .text()
-                .trim(),
-              description: $el
-                .find('td')
-                .eq(2)
-                .text()
-                .trim(),
-              category: $el
-                .find('td')
-                .eq(3)
-                .text()
-                .trim(),
-              amount: parseFloat(amountNew.replace(',', '')),
-            };
-          })
-          .then(el => {
-            expect(TableDataAfter).to.deep.equal(sortedTableData);
-          });
-      });
+    }))    
   });
 });
+
 describe('Canvas chart test', function() {
   before(function() {
     cy.login(urlV1);
