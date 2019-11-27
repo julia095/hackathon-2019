@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
-import * as gs from '../../page-elements/PageElements';
-import { url, urlRedirect, urlAdds } from '../../page-elements/utilities';
-import {loginDataV2} from '../../testdata/test-data'
+import * as gs from '../page-elements/PageElements';
+import { url, urlRedirect, urlAdds } from '../page-elements/utilities';
+import {loginDataV2} from '../testdata/test-data'
 
 describe('Login page UI elements test', function() {
   before(function() {

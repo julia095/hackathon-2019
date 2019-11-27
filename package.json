@@ -4,7 +4,10 @@
   "description": "Applitools Hackathon challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "traditionaltestV1": "npx cypress run --browser chrome --spec 'cypress/integration/TraditionalTests.js'",
+    "traditionaltestV2": "npx cypress run --browser chrome --spec 'cypress/integration/TraditionalTestsV2.js'",
+    "visualtestV1": "npx cypress run --browser chrome --spec 'cypress/integration/VisualAITests.js'",
+    "visualtestV2": "npx cypress run --browser chrome --spec 'cypress/integration/VisualAITestsV2.js'"
   },
   "repository": {
     "type": "git",
@@ -18,10 +21,24 @@
   },
   "homepage": "https://github.com/julia095/hackathon-2019#readme",
   "dependencies": {
-    "cypress": "^3.6.1"
+    "cypress": "^3.6.1",
+    "mochawesome-merge": "^2.1.0"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.8.19",
-    "eslint": "^6.6.0"
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.3.0",
+    "mocha": "^5.2.0",
+    "mochawesome": "^4.1.0",
+    "prettier": "^1.16.4"
   }
 }

@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
-import * as gs from '../../page-elements/PageElements';
-import { url, urlAdds } from '../../page-elements/utilities';
-import {loginDataAI} from '../../testdata/test-data'
+import * as gs from '../page-elements/PageElements';
+import { url, urlAdds } from '../page-elements/utilities';
+import {loginDataAI} from '../testdata/test-data'
 
 describe('Visual validation tests', () => {
   beforeEach(() => {
