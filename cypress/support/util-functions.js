@@ -36,4 +36,4 @@ export async function StoreTableDataInArray(array = []) {
       })
       .then(() => resolve(array));
   });
-}
+};

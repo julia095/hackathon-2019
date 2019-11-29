@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 import * as gs from '../page-elements/PageElements';
 import { urlV1, urlAddsV1 } from '../support/config';
-import {loginDataAI} from '../testdata/test-data'
+import {loginDataAI} from '../testdata/test-data';
 
 describe('Visual validation tests', () => {
   beforeEach(() => {
@@ -40,7 +40,7 @@ it('Should sort table by ascending order when click on the header', () => {
 it('Should display a bar chart comparing the expenses for the year 2017 and 2018 & Add data for 2019', () => {
     cy.login(urlV1);
     cy.get(gs.btnCompareExpenses).click();
-    cy.wait(4000);
+    cy.wait(4000);// added waiting cypress was asserting before dom loaded.
     cy.eyesCheckWindow('Display a chart for 2017 and 2018');
     cy.get(gs.btnShowNextYear).click();
     cy.wait(4000);

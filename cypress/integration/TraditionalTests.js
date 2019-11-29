@@ -78,30 +78,29 @@ describe('Login page UI elements test', function() {
     cy.get(gs.titlePasswordInput)
       .should('be.visible')
       .and('contain', 'Password');
-  })    
+  });    
   
   it('Should password image be visible', function() {
     cy.get(gs.imgPassword).should('be.visible');
-  })
+  });
     
   it('Should display password image correctly ', function() {
     //Should be on the right place and look right - not possible
-  })  
+  }); 
     
   it('Should display Password input correctly ', function() {
     //Should be on the right place and look right - not possible
-  })
+  });
 
   it('Should display Password input correctly ', function() {
     //Should be on the right place and look right - not possible
-  })
+  });
 
   it('Should Password input display text hint ', function() {
     cy.get(gs.inputPassword)
       .should('be.visible')
       .and('have.attr', 'placeholder', 'Enter your password');
-  })
-    
+  });    
 
   it('Should display Sign in button correctly', function() {
     //Should be on the right place and look right - not possible
@@ -128,7 +127,7 @@ describe('Login page UI elements test', function() {
 
   it('Should 3 images under sign in button look correctly', function() {
     //Should be on the right place and look right - not possible to ensure without using additional page diff tools
-  })
+  });
 
   it('Should 3 images under sign in button be visible ', function() {
     cy.get(gs.imgTwitter).should('be.visible');

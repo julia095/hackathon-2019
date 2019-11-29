@@ -5,7 +5,7 @@ Cypress.Commands.add("login", (url) => {
     cy.get(gs.inputUserName).type('user');
     cy.get(gs.inputPassword).type('password');
     cy.get(gs.btnSignIn).click();
-})
+});
 //
 //
 // -- This is a child command --

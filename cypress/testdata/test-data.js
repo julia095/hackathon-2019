@@ -1,4 +1,4 @@
-import {urlRedirectV1, urlRedirectV2} from '../support/config'
+import {urlRedirectV1, urlRedirectV2} from '../support/config';
 export const loginDataV1 = [
     {
       testName: 'throw an error with no username and password',
@@ -59,8 +59,7 @@ export const loginDataV1 = [
       expectedResult: urlRedirectV2,
       redirect: true,
     },
-  ];
-  
+  ];  
   
   export const loginDataAI = [
     {
@@ -84,3 +83,4 @@ export const loginDataV1 = [
       password: 'password',
     },
   ];
+  

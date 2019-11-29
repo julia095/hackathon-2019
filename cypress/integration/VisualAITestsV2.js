@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 import * as gs from '../page-elements/PageElements';
 import { urlV2, urlAddsV2 } from '../support/config';
-import {loginDataAI} from '../testdata/test-data'
+import {loginDataAI} from '../testdata/test-data';
 
 describe('Visual validation tests', () => {
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe('Visual validation tests', () => {
       cy.get(gs.btnSignIn).click();
       cy.eyesCheckWindow(`${data.testName}`);
     });
-  })
+  });
 
 
 it('Should sort table by ascending order when click on the header', () => {
